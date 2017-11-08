@@ -1,0 +1,332 @@
+$background-color: rgb(242, 242, 242);
+$background-white: rgb(255, 255, 255);
+$background-disabled: #f9f9f9;
+$black-primary: rgb(0, 0, 0);
+$dark-grey-labels: rgb(81, 83, 86);
+$grey-placeholders: rgb(155, 155, 155);
+$grey-border-bottom: rgb(217, 217, 217);
+$green-button: rgb(107, 212, 0);
+$green-border: rgb(93, 182, 3);
+$error-message-color: #dd0000;
+$label-size: 10px;
+$order-font-size: 11px;
+$headers-size: 12px;
+$placeholder-size: 15px;
+$tablet-screen: 950px;
+$small-screen: 600px;
+
+body {
+  background-color: $background-color;
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+
+  div.main {
+    width: 850px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+
+    @media screen and (max-width: $tablet-screen) {
+      width: 562px;
+    }
+
+    @media screen and (max-width: $small-screen) {
+      width: 300px;
+    }
+
+    form.purchaseForm {
+
+      fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+
+        &:disabled {
+          section {
+            .formField {
+              input, select {
+                background-color: $background-disabled;
+              }
+            }
+          }
+        }
+
+        section {
+          width: 562px;
+
+          @media screen and (max-width: $small-screen) {
+            width: 100%;
+          }
+
+          .sectionHeader {
+            text-transform: uppercase;
+            height: 20px;
+            margin: 16px 0px;
+
+            span.itemNumber {
+              display: inline-block;
+              color: #FFF;
+              background-color: $black-primary;
+              border-radius: 100%;
+              width: 20px;
+              height: 20px;
+              line-height: 20px;
+              text-align: center;
+              font-size: $headers-size;
+              font-weight: bold;
+            }
+
+            span.sectionName {
+              line-height: 20px;
+              color: $black-primary;
+              font-size: $headers-size;
+              font-weight: bold;
+            }
+          }
+
+          .right {
+            float: right;
+          }
+
+          .formField {
+            width: 276px;
+            height: 52px;
+            position: relative;
+            margin-bottom: 20px;
+            display: inline-block;
+
+            @media screen and (max-width: $small-screen) {
+              width: 100%;
+            }
+
+            label {
+              position: absolute;
+              top: 8px;
+              left: 8px;
+              text-transform: uppercase;
+              font-size: $label-size;
+              font-weight: bold;
+            }
+
+            input, input:focus {
+              width: 100%;
+              height: 100%;
+              border-radius: 5px;
+              background-color: $background-white;
+              border-top: 0px;
+              border-left: 0px;
+              border-right: 0px;
+              border-bottom: 2px solid $grey-border-bottom;
+              font-size: $placeholder-size;
+              padding: 20px 8px 6px 8px;
+              color: $black-primary;
+              box-sizing: border-box;
+              outline: none;
+
+              &[name="creditcard"] {
+                background-image: url(../img/visa_PNG17.png);
+                background-size: 74px;
+                background-repeat: no-repeat;
+                background-position: 98%;
+              }
+            }
+
+            input.ng-invalid.ng-dirty {
+              border: 1px solid $error-message-color;
+              border-bottom: 2px solid $error-message-color;
+            }
+
+            input:placeholder {
+              color: $grey-placeholders;
+            }
+
+            select {
+              @extend input;
+              padding-left: 5px;
+            }
+
+            span.error-message {
+              color: $error-message-color;
+              font-weight: bold;
+              font-size: $headers-size;
+              padding: 0px 5px;
+            }
+
+            span.validCheck:after {
+              display: block;
+              content: "\f00c";
+              color: #6bd400;
+              font: normal normal normal 16px/1 FontAwesome;
+              position: absolute;
+              right: 10px;
+              top: 10px;
+            }
+
+            span.validCheck.creditValid:after {
+              @extend span.validCheck:after;
+              right: 95px;
+            }
+          }
+
+          .formFieldLong {
+            @extend .formField;
+            width: 100%;
+          }
+        }
+
+        .completePurchase {
+          margin-top: 18px;
+        }
+
+        .completePurchase {
+          margin-top: 18px;
+          position: relative;
+          width: 100%;
+          height: auto;
+
+          &:before {
+            content: "\f07a";
+            position: absolute;
+            color: #fff;
+            display: block;
+            font: normal normal normal 16px/1 FontAwesome;
+            top: 18px;
+            left: 32%;
+
+            @media screen and (max-width: $small-screen) {
+              content: "\f07a";
+              position: absolute;
+              color: #fff;
+              display: block;
+              font: normal normal normal 16px/1 FontAwesome;
+              top: 71px;
+              left: 18%;
+            }
+          }
+
+          input[type="submit"] {
+            height: 52px;
+            line-height: 52px;
+            width: 562px;
+            background-color: $green-button;
+            border-radius: 5px;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-bottom: 2px solid $green-border;
+            text-transform: uppercase;
+            color: #FFF;
+            transition: all .5s ease;
+            font-weight: bold;
+            outline: none;
+
+            @media screen and (max-width: $small-screen) {
+              width: 100%;
+            }
+
+            &:hover {
+              transition: all .5s ease;
+              background-color: $green-border;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    aside.orderInfoBox {
+      background-color: $background-white;
+      border-radius: 5px;
+      width: 276px;
+      height: 276px;
+      float: right;
+      border-bottom: 2px solid $grey-border-bottom;
+      margin-top: 52px;
+      padding: 4px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: $black-primary;
+
+      @media screen and (max-width: $tablet-screen) {
+        float: none;
+        width: 100%;
+      }
+
+      .innerAside {
+        border: 2px dotted $grey-border-bottom;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 12px;
+
+        p.asideTitle {
+          text-transform: uppercase;
+          font-weight: bold;
+          margin: 2px 0px;
+          font-size: $order-font-size;
+        }
+
+        table {
+          width: 100%;
+          border-bottom: 2px dotted $grey-border-bottom;
+
+          &.totalPriceTab {
+            border-bottom: none;
+          }
+
+          tr {
+            width: 100%;
+            td {
+              padding: 7px 0px;
+              font-size: $order-font-size;
+
+              &#totalPriceLabel {
+                font-weight: bold;
+                padding-top: 3px;
+              }
+            }
+            td.rightColumn {
+              text-align: right;
+
+              &#totalPriceSum {
+                font-weight: bold;
+                font-size: 22px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .orderMessage {
+      @extend aside.orderInfoBox;
+      position: absolute;
+      top: 300px;
+      right: 0;
+      height: 333px;
+
+      .innerAside {
+        p {
+          @extend p.asideTitle;
+        }
+
+        table.userSummary {
+          @extend table;
+          border-bottom: none;
+        }
+      }
+
+      @media screen and (max-width: $tablet-screen) {
+        position: static;
+        top: 0;
+        left: 0;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}
